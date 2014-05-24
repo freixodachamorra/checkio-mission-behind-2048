@@ -1,4 +1,4 @@
-<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <strong>Notice:</strong>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be added. (b)one movement can only have on 'add' action for each number(as in example 2 below).</i></p>
+<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <strong>Notice:</strong>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be generated. (b)one movement can only have on 'add' action for each number(as in example 2 below). (c)for all zero matrix, new number will be generated. See example 5 below.</i></p>
 
 <p>More information about this game can be found <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">here</a> </p>
 
@@ -28,7 +28,6 @@ checkio(
         [0,0,0,2]
     ]
 ##example 2
-##for one movement, the 'add' action can ony be performed once for each number
 checkio(
     [
         [2,2,2,2],
@@ -66,6 +65,19 @@ checkio(
         [0,0,0,2],
         [0,0,0,0],
         [0,0,0,0]
+    ]
+##example 5
+checkio(
+    [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+    ],'right') == [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,2]
     ]
     </pre>
 </div>
