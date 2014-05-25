@@ -1,6 +1,7 @@
-def checkio(a, b):
-
-    return None
+def checkio(input_matrix , movement):
+    
+    #replace this for solution
+    return output_matrix
 
 
 #These "asserts" using only for self-checking and not necessary for auto-testing

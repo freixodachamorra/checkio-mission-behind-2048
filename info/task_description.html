@@ -1,4 +1,4 @@
-<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <strong>Notice:</strong>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be generated. (b)one movement can only have on 'add' action for each number(as in example 2 below). (c)for all zero matrix, new number will be generated. See example 5 below.</i></p>
+<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <br><strong>Notice:</strong><br>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be generated. <br>(b)At the brginning of 2048, there's already two numbers in matrix. An all-zero matrix is not possible. <br>(b)One movement can only have on 'add' action for each number(as in example 2 below).</i></p>
 
 <p>More information about this game can be found <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">here</a> </p>
 
@@ -6,7 +6,11 @@
 
 <p><strong>Output: </strong>The result 2d list 2048 matrix, new element should alway be 2 and appear on the last zero-element index. Indexes in a matrix looks lke this => [[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]] the last index is  15. If the element at index 15 is non-zero, then the last index should the largest index that has a zero-element. </p>
 
-<p><strong>Preconditions: </strong> (a)The matrix is always 4*4. (b)The numebers in the matrix are always power of 2, i.e. 2**n, for all n is positive interger. It's ok to have numbers larger than 2048.</p>
+<p><strong>Preconditions: </strong> (a)The matrix is always 4*4. (b)The numebers in the matrix are always 0 or 2**n, for all n is positive integer 1~10.</p>
+
+<p class="for_info_only"><strong>How it is used:</strong>
+This can be used as a bases for further adding GUI to the python verison of the 2048 game.
+</p>
 
 <div class="for_info_only">
     <p><i></i></p>
@@ -65,19 +69,6 @@ checkio(
         [0,0,0,2],
         [0,0,0,0],
         [0,0,0,0]
-    ]
-##example 5
-checkio(
-    [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]
-    ],'right') == [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,2]
     ]
     </pre>
 </div>
