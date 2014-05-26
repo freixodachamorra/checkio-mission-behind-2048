@@ -1,4 +1,4 @@
-<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <br><strong>Notice:</strong><br>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be generated. <br>(b)At the brginning of 2048, there's already two numbers in matrix. An all-zero matrix is not possible. <br>(b)One movement can only have on 'add' action for each number(as in example 2 below).</i></p>
+<p><i>You are given a 4x4 matrix expressed as a 2D list. YOUR task is to give the game its basic movement functionality. The matrix should allow for movement in all 4 directions (Up, Down, Left, Right). For convenience, the random element generation rule is defined as followed. The new element will always be 2 and should always appear on the last zero-element index. <br><strong>Notice:</strong><br>(a)If there's no room for the movement (as in example 3 and 4 below), new number will not be generated. <br>(b)At the brginning of 2048, there's already two numbers in matrix. An all-zero matrix is not possible. <br>(b)One movement can only have on 'add' action for each number(as in example 2 below).<br>(c)If the game is won ,i.e. whenever a 1024 is added to another 1024. The rutern winning message is a 2D list [['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N']], as in example 5.</i></p>
 
 <p>More information about this game can be found <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">here</a> </p>
 
@@ -69,6 +69,19 @@ checkio(
         [0,0,0,2],
         [0,0,0,0],
         [0,0,0,0]
+    ]
+##example 5
+checkio(
+    [
+        [0,0,1024,1024],
+        [0,0,0,2],
+        [0,0,0,0],
+        [0,0,0,0]
+    ],'right') == [
+        ['U','W','I','N'],
+        ['U','W','I','N'],
+        ['U','W','I','N'],
+        ['U','W','I','N']
     ]
     </pre>
 </div>
