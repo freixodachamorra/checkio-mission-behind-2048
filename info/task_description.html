@@ -1,41 +1,55 @@
 <p>
-    You are given a 4x4 matrix expressed as a 2D list.
-    YOUR task is to give the game its basic movement functionality.
-    The matrix should allow for movement in all 4 directions (Up, Down, Left, Right).
-    For convenience, the random element generation rule is defined as followed.
-    The new element will always be 2 and should always appear on the last zero-element index.
-    <br><strong>Notice:</strong><br>(a)If there's no room for the movement (as in example 3 and 4 below),
-    new number will not be generated. <br>(b)At the brginning of 2048, there's already two numbers in matrix.
-    An all-zero matrix is not possible.
-    <br>(b)One movement can only have on 'add' action for each number(as in example 2 below).
-    <br>(c)If the game is won ,i.e. whenever a 1024 is added to another 1024.
-    The rutern winning message is a 2D list [['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N']],
-    as in example 5.</i></p>
+    Maybe you already hear about a simple, but addictive game 2048
+    (read about this <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">here</a>).
+    In this task we will look behind the scenes and try to implement its basic movement functionality.
 
-<p>
-    More information about this game can be found <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">here</a>
 </p>
 
 <p>
-    <strong>Input: </strong>
-    A 2D list of the 2048 matrix and a string as the option for type of movement, i.e., 'up', 'down', 'left' or 'right'
+    2048 is played on a simple 4×4 grid with tiles.
+    Player can move tiles left, right, up, and down.
+    If two tiles of the same number collide while moving,
+    they will merge into a tile with the total value of the two tiles that collided.
+    The resulting tile cannot merge with another tile again in the same move.
+    Every turn, a new tile will randomly appear in an empty spot on the board with a value of either 2 or 4.
+
+    #TODO
+    Indexes in a matrix looks lke this => [[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]] the last index is 15.
+    If the element at index 15 is non-zero, then the last index should the largest index that has a zero-element.
+
+    At the beginning, there's already two numbers on the board.
+</p>
+<p>
+    You are given a state of the game as 4x4 matrix with numbers which are powers by 2 and
+    player move as a direction (up, down, left, right).
+    You should to return the game state after this move.
+</p>
+
+<div>
+    If the game is won ,i.e. 2048 appears on the board, then return the winning matrix --
+    <pre>[['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N'], ['U','W','I','N']]</pre>
+    If the game is lose, i.e. nothing change after the player move and there is not a empty spot, then return the losing matrix --
+    <pre>[['G','A','M','E'], ['O','V','E','R'], ['G','A','M','E'], ['O','V','E','R']]</pre>
+    </div>
+
+<p>
+    <strong>Input: </strong> A game state as a list of lists with integers and player's move as a string  ('up', 'down', 'left' or 'right').
 </p>
 
 <p>
     <strong>Output: </strong>
-    The result 2d list 2048 matrix, new element should alway be 2 and appear on the last zero-element index.
-    Indexes in a matrix looks lke this => [[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]] the last index is  15.
-    If the element at index 15 is non-zero, then the last index should the largest index that has a zero-element.
+    The game state after player's move as a list of lists with integers or letters.
 </p>
 
 
 <p class="for_info_only"><strong>How it is used:</strong>
-This can be used as a bases for further adding GUI to the python verison of the 2048 game.
+    This can be used as a bases for further adding GUI to the python version of the 2048 game.
 </p>
 
 
 <div class="for_info_only">
     <p><i></i></p>
+
     <p>
         <strong>Example:</strong>
     </p>
