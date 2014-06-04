@@ -106,5 +106,7 @@ move2048([[2, 4, 8, 16],
 
 
 <p><strong>Preconditions: </strong>
-    (a)The matrix is always 4*4. (b)The numebers in the matrix are always 0 or 2**n, for all n is positive integer 1~10.
+    len(state) == 4<br>
+    all(len(row) == 4 for row in state)<br>
+    all(all(x in (0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024) for x in row) for row in state)<br>
 </p>
