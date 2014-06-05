@@ -43,10 +43,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var fname = 'move2048';
 
             var checkioInput = data.in;
-            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput[0]) + ',' +
-                + JSON.stringify(checkioInput[1]) + ')';
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput[0]) + ',' + JSON.stringify(checkioInput[1]) + ')';
 
-            var failError = function(dError) {
+            var failError = function (dError) {
                 $content.find('.call').html('Fail: ' + checkioInputStr);
                 $content.find('.output').html(dError.replace(/\n/g, ","));
 
@@ -90,13 +89,12 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 $content.find('.answer').remove();
             }
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
+            var canvasStart = new States2048($content.find(".explanation div")[0]);
+            canvasStart.draw(checkioInput[0]);
+            $content.find(".explanation div").eq(1).text({"left": "⍇", "right": "⍈", "up": "⍐", "down": "⍗"}[checkioInput[1]]);
+
+            var canvasEnd = new States2048($content.find(".explanation div")[2]);
+            canvasEnd.draw(rightResult);
 
 
             this_e.setAnimationHeight($content.height() + 60);
@@ -116,28 +114,73 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //                this_e.sendToConsoleCheckiO("something");
 //            });
 //        });
+        function States2048(dom) {
+            var colorOrange4 = "#F0801A";
+            var colorOrange3 = "#FA8F00";
+            var colorOrange2 = "#FAA600";
+            var colorOrange1 = "#FABA00";
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+            var colorBlue4 = "#294270";
+            var colorBlue3 = "#006CA9";
+            var colorBlue2 = "#65A1CF";
+            var colorBlue1 = "#8FC7ED";
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            var colorGrey4 = "#737370";
+            var colorGrey3 = "#9D9E9E";
+            var colorGrey2 = "#C5C6C6";
+            var colorGrey1 = "#EBEDED";
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            var colorWhite = "#FFFFFF";
 
-        var colorWhite = "#FFFFFF";
-        //Your Additional functions or objects inside scope
-        //
-        //
-        //
+            var cell = 50;
 
+            var padding = 10;
 
+            var edge = 5;
+
+            var sizeX = padding * 2 + cell * 4 + edge * 5;
+
+            var paper = Raphael(dom, sizeX, sizeX);
+
+            var fontSizes = {
+                0: cell * 0.8,
+                2: cell * 0.8,
+                4: cell * 0.8,
+                8: cell * 0.8,
+                16: cell * 0.6,
+                32: cell * 0.6,
+                64: cell * 0.6,
+                128: cell * 0.5,
+                256: cell * 0.5,
+                512: cell * 0.5,
+                1024: cell * 0.4,
+                "U": cell * 0.8,
+                "W": cell * 0.8,
+                "I": cell * 0.8,
+                "N": cell * 0.8,
+                "G": cell * 0.8,
+                "A": cell * 0.8,
+                "M": cell * 0.8,
+                "E": cell * 0.8,
+                "O": cell * 0.8,
+                "V": cell * 0.8,
+                "R": cell * 0.8
+            };
+
+            this.draw = function(matrix){
+                paper.rect(padding, padding, sizeX - padding * 2, sizeX - padding * 2, edge).attr({
+                        "stroke-width": 2, "fill": colorBlue1, "stroke": colorBlue4});
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 0; j < 4; j++) {
+                        paper.rect(padding + (i + 1) * edge + i * cell, padding + (j + 1) * edge + j * cell, cell, cell, edge).attr(
+                            {"fill": colorBlue2, "stroke": colorBlue4, "stroke-width": 1});
+                        paper.text(padding + (i + 1) * edge + (i + 0.5) * cell, padding + (j + 1) * edge + (j + 0.5) * cell, matrix[j][i]).attr(
+                            {"font-family": "Roboto, Open-sans, sans", "font-size": fontSizes[matrix[j][i]], "stroke": colorBlue4}
+                        );
+                    }
+                }
+            }
+
+        }
     }
 );
