@@ -23,6 +23,7 @@
     2048 is played on a simple 4×4 grid with tiles. Player can move tiles left, right, up, and down.
     If two tiles of the same number collide while moving, they will merge into a tile with the sum value of the two tiles.
     The resulting tile cannot merge with another tile again in the same move.
+    If we have three tiles of the same number, then first collide tiles which closer to edge in the moving direction (right move - closer to the right edge).
     Every turn, a new tile will appear in the last empty spot (value 0) on the board with a value of 2.
     The last empty slot is determined by indexes that are defined in the following order:
     <pre class="format for_info_only">[[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]</pre>
@@ -84,6 +85,13 @@ move2048([[4, 0, 0, 0],
                                       [0, 0, 0, 4],
                                       [0, 0, 0, 0],
                                       [0, 0, 2, 16]]
+move2048([[2, 0, 2, 2],
+          [0, 4, 4, 4],
+          [8, 8, 8, 16],
+          [0, 0, 0, 0]], 'right') == [[0, 0, 2, 4],
+                                      [0, 0, 4, 8],
+                                      [0, 8, 16, 16],
+                                      [0, 0, 0, 2]]
 move2048([[256, 0, 256, 4],
           [16, 8, 8, 0],
           [32, 32, 32, 32],
