@@ -1,0 +1,106 @@
+<style type="text/css">pre.format {
+        background-color: #EBEDED;
+        margin: 5px;
+        padding: 3px;
+        border: solid 1px #737370;
+        border-radius: 3px;
+        --webkit-border-radius: 3px;
+        overflow-x: auto;
+        /*width: 166px;*/
+    }
+</style>
+<p>Tal vez ya has escuchado sobre un simple y adictivo juego llamado <strong>2048 </strong>(leer m&aacute;s al respecto <a href="http://en.wikipedia.org/wiki/2048_%28video_game%29">aqu&iacute;</a>). ). En esta misi&oacute;n, vamos a ver qu&eacute; hay tras el tel&oacute;n y trataremos de recrear su funcionalidad b&aacute;sica de movimiento.</p>
+
+<div>2048 se juega en una simple cuadr&iacute;cula de 4 &times; 4 piezas. Un jugador puede mover las piezas hacia la izquierda, la derecha, hacia arriba o hacia abajo. Si dos piezas del mismo n&uacute;mero chocan mientras se mueven, se fusionar&aacute;n en una nueva pieza que representa la suma de las dos fichas. Esta nueva ficha no puede fusionarse con otra ficha en la misma jugada. Si existen tres fichas con el mismo valor, las dos fichas que se encuentren cerca del borde en la direcci&oacute;n de movimiento se fusionaran (movimiento a la derecha- las fichas m&aacute;s cercanas al borde derecho). En cada jugada, una nueva ficha aparecer&aacute; en el &uacute;ltimo espacio vac&iacute;o (valor 0) del tablero, con un valor de 2. El &uacute;ltimo espacio vac&iacute;o est&aacute; determinado por &iacute;ndices definidos seg&uacute;n el siguiente orden:
+<pre class="format for_info_only">
+[[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]</pre>
+
+<pre class="format for_editor_only" style="width: 380px">
+[[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]</pre>
+Al inicio, existen dos n&uacute;meros en el tablero.</div>
+
+<p>&nbsp;</p>
+
+<p>Se te informara el estado del juego representado como una matriz de 4x4, con n&uacute;meros que son potencias de 2. Los jugadores se mueven en una direcci&oacute;n especifica (arriba, abajo, izquierda, derecha). Deber&aacute;s retornar el estado del juego despu&eacute;s de este movimiento.</p>
+
+<p>&nbsp;</p>
+
+<div>Si se gana el juego, es decir, 2048 aparece en el tablero, deber&aacute;s escribir la siguiente matriz (&ldquo;<em>ganar</em>&rdquo;):
+
+<pre class="format for_info_only">
+[[&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;]]</pre>
+
+<pre class="format for_editor_only" style="width: 380px">
+[[&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;], [&#39;U&#39;,&#39;W&#39;,&#39;I&#39;,&#39;N&#39;]]</pre>
+Si pierdes el juego, es decir, no puedes cambiar nada despu&eacute;s del movimiento y no quedan espacios vac&iacute;os, deber&aacute;s escribir la siguiente matriz (&ldquo;<em>perder</em>&rdquo;):
+
+<pre class="format for_info_only">
+[[&#39;G&#39;,&#39;A&#39;,&#39;M&#39;,&#39;E&#39;], [&#39;O&#39;,&#39;V&#39;,&#39;E&#39;,&#39;R&#39;], [&#39;G&#39;,&#39;A&#39;,&#39;M&#39;,&#39;E&#39;], [&#39;O&#39;,&#39;V&#39;,&#39;E&#39;,&#39;R&#39;]]</pre>
+
+<pre class="format for_editor_only" style="width: 380px">
+[[&#39;G&#39;,&#39;A&#39;,&#39;M&#39;,&#39;E&#39;], [&#39;O&#39;,&#39;V&#39;,&#39;E&#39;,&#39;R&#39;], [&#39;G&#39;,&#39;A&#39;,&#39;M&#39;,&#39;E&#39;], [&#39;O&#39;,&#39;V&#39;,&#39;E&#39;,&#39;R&#39;]]</pre>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>Datos de Entrada: </strong> El estado del juego, como una lista de listas con enteros (<em>int</em>) y y la direcci&oacute;n del movimiento del jugador, como una cadena (<em>str</em>): &#39;up&#39;, &#39;down&#39;, &#39;left&#39; or &#39;right&#39;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Salida: </strong> El estado del juego despu&eacute;s de aplicar el movimiento indicado, como una lista de listas con enteros (<em>int</em>) o letras (matriz &ldquo;<em>ganar</em>&rdquo;/&rdquo;<em>perder</em>&rdquo;).</p>
+
+<p class="for_info_only"><strong>&iquest;C&oacute;mo se usa?:</strong> Esta misi&oacute;n puede ser la base de una implementaci&oacute;n con GUI del juego 2048 en Python.</p>
+
+<div class="for_info_only">
+<p>&nbsp;</p>
+
+<p><strong>Ejemplo:</strong></p>
+
+<pre class="brush: python">
+move2048([[0, 2, 0, 0],
+          [0, 0, 0, 0],
+          [0, 0, 0, 0],
+          [0, 2, 0, 0]], &#39;up&#39;) == [[0, 4, 0, 0],
+                                   [0, 0, 0, 0],
+                                   [0, 0, 0, 0],
+                                   [0, 0, 0, 2]]
+move2048([[4, 0, 0, 0],
+          [0, 4, 0, 0],
+          [0, 0, 0, 0],
+          [0, 0, 8, 8]], &#39;right&#39;) == [[0, 0, 0, 4],
+                                      [0, 0, 0, 4],
+                                      [0, 0, 0, 0],
+                                      [0, 0, 2, 16]]
+move2048([[2, 0, 2, 2],
+          [0, 4, 4, 4],
+          [8, 8, 8, 16],
+          [0, 0, 0, 0]], &#39;right&#39;) == [[0, 0, 2, 4],
+                                      [0, 0, 4, 8],
+                                      [0, 8, 16, 16],
+                                      [0, 0, 0, 2]]
+move2048([[256, 0, 256, 4],
+          [16, 8, 8, 0],
+          [32, 32, 32, 32],
+          [4, 4, 2, 2]], &#39;right&#39;) == [[0, 0, 512, 4],
+                                      [0, 0, 16, 16],
+                                      [0, 0, 64, 64],
+                                      [0, 2, 8, 4]]
+move2048([[4, 4, 0, 0],
+          [0, 4, 1024, 0],
+          [0, 256, 0, 256],
+          [0, 1024, 1024, 8]], &#39;down&#39;) == [[&#39;U&#39;, &#39;W&#39;, &#39;I&#39;, &#39;N&#39;],
+                                           [&#39;U&#39;, &#39;W&#39;, &#39;I&#39;, &#39;N&#39;],
+                                           [&#39;U&#39;, &#39;W&#39;, &#39;I&#39;, &#39;N&#39;],
+                                           [&#39;U&#39;, &#39;W&#39;, &#39;I&#39;, &#39;N&#39;]]
+move2048([[2, 4, 8, 16],
+          [32, 64, 128, 256],
+          [512, 1024, 2, 4],
+          [8, 16, 32, 64]], &#39;left&#39;) == [[&#39;G&#39;, &#39;A&#39;, &#39;M&#39;, &#39;E&#39;],
+                                        [&#39;O&#39;, &#39;V&#39;, &#39;E&#39;, &#39;R&#39;],
+                                        [&#39;G&#39;, &#39;A&#39;, &#39;M&#39;, &#39;E&#39;],
+                                        [&#39;O&#39;, &#39;V&#39;, &#39;E&#39;, &#39;R&#39;]]</pre>
+</div>
+
+<p><strong>Condiciones: </strong> len(state) == 4<br />
+all(len(row) == 4 for row in state)<br />
+all(all(x in (0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024) for x in row) for row in state)</p>
